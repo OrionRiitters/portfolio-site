@@ -1,0 +1,57 @@
+// App.test.tsx
+import React from 'react';
+import { render } from '@testing-library/react';
+import NavBar from './NavBar';
+
+test('props.tabKeys array contains unique tabKeys', () => {
+    const correctTabArray = [
+        {
+            tabKey: '0',
+            tabContent: 'Home'
+        },
+        {
+            tabKey: '1',
+            tabContent: 'About Us'
+        },
+        {
+            tabKey: 'abc',
+            tabContent: 'Do Not Click'
+        }
+    ]
+
+    const incorrectTabArray = [
+        {
+            tabKey: '0',
+            tabContent: 'Lorem Ipsum'
+        },
+        // tabKey below is incorrect
+        {
+            tabKey: '0',
+            tabContent: 'Incorrect Tab Key'
+        },
+        {
+            tabKey: '-1',
+            tabContent: 'Fine'
+        }
+    ]
+  const component = render(
+    <NavBar tabs={correctTabArray} />
+  );
+
+ // let tree = component.toJSON();
+  expect(true).toBeTruthy();
+  console.log(tree);
+});
+
+//   // manually trigger the callback
+//   tree.props.onMouseEnter();
+//   // re-rendering
+//   tree = component.toJSON();
+//   expect(tree).toMatchSnapshot();
+
+//   // manually trigger the callback
+//   tree.props.onMouseLeave();
+//   // re-rendering
+//   tree = component.toJSON();
+//   expect(tree).toMatchSnapshot();
+// });
